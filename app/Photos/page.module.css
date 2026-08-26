@@ -1,0 +1,22 @@
+.gridcon{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.hed{
+    color: #FF1493;
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+
+
+.ims{
+    height: 100%;
+    height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
