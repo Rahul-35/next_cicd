@@ -20,7 +20,7 @@ export default async function Songs(){
                 return (
                     <div key={dt.previewUrl}>
                         <h2>{dt.trackName} (Collection: {dt.collectionName})</h2>
-                        <img src={dt.artworkUrl100}/>
+                        <img src={dt.artworkUrl100} alt="title"/>
                         <p>{dt.artistName}</p>
                     </div>
 
