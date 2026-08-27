@@ -28,7 +28,7 @@ export default function Songs() {
                 setSongs(data.results);
             })
             .catch(error => {
-                console.error("Error fetching songs:", error);
+                console.error("Error fetching songss:", error);
             });
 
     }, []);
