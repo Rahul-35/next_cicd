@@ -12,9 +12,16 @@ interface ISongs{
 
 export default async function Songs(){
 
-    const baseUrl=process.env.NEXT_PUBLIC_BASE_URL
-    const response=await fetch(`${baseUrl}/api/songs`);
-    const data=await response.json();
+    const params = new URLSearchParams({
+    term: "lisa manoban",
+    entity: "song"
+});
+
+const response = await fetch(
+    `https://itunes.apple.com/search?${params}`
+);
+
+const data= await response.json();
 
     return(
         <div>
