@@ -1,4 +1,5 @@
 "use client";
+import styles from "./page.module.css";
 
 import { useEffect, useState } from "react";
 
@@ -34,18 +35,17 @@ export default function Songs() {
     }, []);
 
     return (
-        <div>
+        <div className={styles.gridcontainer}>
             {songs.map((dt) => (
-                <div key={dt.previewUrl}>
-                    <h2>
-                        {dt.trackName} (Collection: {dt.collectionName})
-                    </h2>
-
+                <div  key={dt.previewUrl}>
                     <img
-                        src={dt.artworkUrl100}
+                    className={styles.ims}
+                        src={dt.artworkUrl100.replace("100x100", "1000x1000")}
                         alt={dt.trackName}
                     />
-
+                    <h2 className={styles.songname}>
+                        {dt.trackName} (Collection: {dt.collectionName})
+                    </h2>
                     <p>{dt.artistName}</p>
                 </div>
             ))}
