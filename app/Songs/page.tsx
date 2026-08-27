@@ -1,41 +1,54 @@
-export const dynamic = "force-dynamic";
+"use client";
 
+import { useEffect, useState } from "react";
 
-interface ISongs{
-    artistName:string;
-    collectionName:string;
-    trackName:string;
-    artworkUrl100:string;
-    previewUrl:string;
-    releaseDate:string;
+interface ISongs {
+    artistName: string;
+    collectionName: string;
+    trackName: string;
+    artworkUrl100: string;
+    previewUrl: string;
+    releaseDate: string;
 }
 
-export default async function Songs(){
+export default function Songs() {
 
-    const params = new URLSearchParams({
-    term: "lisa manoban",
-    entity: "song"
-});
+    const [songs, setSongs] = useState<ISongs[]>([]);
 
-const response = await fetch(
-    `https://itunes.apple.com/search?${params}`
-);
+    useEffect(() => {
 
-const data= await response.json();
+        const params = new URLSearchParams({
+            term: "lisa manoban",
+            entity: "song"
+        });
 
-    return(
+        fetch(`https://itunes.apple.com/search?${params}`)
+            .then(response => response.json())
+            .then(data => {
+                setSongs(data.results);
+            })
+            .catch(error => {
+                console.error("Error fetching songs:", error);
+            });
+
+    }, []);
+
+    return (
         <div>
-            {data.results.map((dt:ISongs)=>{
-                return (
-                    <div key={dt.previewUrl}>
-                        <h2>{dt.trackName} (Collection: {dt.collectionName})</h2>
-                        <img src={dt.artworkUrl100} alt="song title"/>
-                        <p>{dt.artistName}</p>
-                    </div>
+            {songs.map((dt) => (
+                <div key={dt.previewUrl}>
+                    <h2>
+                        {dt.trackName} (Collection: {dt.collectionName})
+                    </h2>
 
-                )
-            })}
+                    <img
+                        src={dt.artworkUrl100}
+                        alt={dt.trackName}
+                    />
+
+                    <p>{dt.artistName}</p>
+                </div>
+            ))}
         </div>
-    )
-
+    );
 }
