@@ -11,7 +11,8 @@ interface ISongs{
 
 export default async function Songs(){
 
-    const response=await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/songs`);
+    const baseUrl=process.env.NEXT_PUBLIC_BASE_URL || 'https://icy-sea-041b01410.7.azurestaticapps.net'
+    const response=await fetch(`${baseUrl}/api/songs`);
     const data=await response.json();
 
     return(
