@@ -1,5 +1,3 @@
-
-
 export async function GET() {
     
     const params = new URLSearchParams({
