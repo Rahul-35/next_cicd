@@ -6,6 +6,7 @@ export default function Navbar(){
         <nav className={styles.navbar}>
             <Link className={styles.al} href={"/"}>Home</Link>
             <Link className={styles.al} href={"/Photos"}>Photos</Link>
+            <Link className={styles.al} href={"/Songs"}>Songs</Link>
         </nav>
     ) 
 }
