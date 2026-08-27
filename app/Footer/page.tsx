@@ -23,7 +23,7 @@ export default function Footer(){
     </div>
 
     <div className={styles.footerBottom}>
-        <p>© 2026 Lisa Fan Website. All rights reserved.</p>
+        <p>© 2026 Lisa Manoban Fan Website. All rights reserved.</p>
     </div>
 </footer>
     )
